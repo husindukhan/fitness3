@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkoutFragments">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Search Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Workouts"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etSearchWorkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter exercise name..."
+            android:inputType="text"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWorkoutResults"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Add Workout Section using DocumentReference & Firebase Storage -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add New Workout"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivWorkout"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:contentDescription="Workout Image"
+            android:src="@mipmap/ic_launcher" />
+
+        <EditText
+            android:id="@+id/etAddName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Workout Name"
+            android:inputType="text"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/etAddType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type (e.g. Strength, Cardio)"
+            android:inputType="text"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/etAddMuscleGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Muscle Group (e.g. Chest)"
+            android:inputType="text"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/etAddDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Steps / Description"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/btnAddWorkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Workout to Firebase"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+</ScrollView>

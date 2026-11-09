@@ -1,0 +1,53 @@
+package com.example.fitness;
+
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        Button btnHome = findViewById(R.id.btnHome);
+        Button btnWorkout = findViewById(R.id.btnWorkout);
+        Button btnScanner = findViewById(R.id.btnScanner);
+        Button btnNutrition = findViewById(R.id.btnNutrition);
+        Button btnProfile = findViewById(R.id.btnProfile);
+
+        // Load default fragment on startup
+        if (savedInstanceState == null) {
+            showFragment(new HomeFragment());
+        }
+
+        btnHome.setOnClickListener(v -> showFragment(new HomeFragment()));
+        btnWorkout.setOnClickListener(v -> showFragment(new WorkoutFragments()));
+        btnScanner.setOnClickListener(v -> showFragment(new ScannerFragment()));
+        btnNutrition.setOnClickListener(v -> showFragment(new NutritionFragment()));
+        btnProfile.setOnClickListener(v -> showFragment(new ProfileFragment()));
+    }
+
+    private void showFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.commit();
+    }
+}
